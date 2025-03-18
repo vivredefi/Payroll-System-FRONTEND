@@ -1,0 +1,19 @@
+.dataTables_filter input {
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+/* Center the search bar */
+#custom-search-container {
+    text-align: start;
+    margin-bottom: 10px;
+}
+
+/*MODAL FORMS*/
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px; /* Ensures it stays box-shaped */
+    cursor: pointer;
+}

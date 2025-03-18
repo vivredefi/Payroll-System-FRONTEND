@@ -1,0 +1,203 @@
+body { 
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .logoicon {
+    width: 23px;
+    height: 23px;
+    margin-right: 8px;
+    margin-left: 40px;
+    margin-bottom: 5px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 10px;
+  }
+
+  .header a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+
+  .header a.logo {
+    font-family: "Atkinson Hyperlegible Next", serif;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 5px;
+  }
+
+  /* Login Contents */
+  .container {
+    max-width: 100%;
+    padding-left: 400px;
+    padding-top: 200px;
+    padding-right: 500px;
+  }
+
+  .row {
+    justify-content: flex-start !important;
+  }
+
+  .col-md-4 {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .welcome, .enter, .user, .pass {
+    text-align: left;
+  }
+
+  .welcome {
+    font-family: "Lexend", serif;
+    font-size: 40px;
+    font-weight: normal;
+    margin-bottom: 13px;
+  }
+
+  .enter {
+    font-family: "Lexend", serif;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 60px;
+  }
+
+  .leaf-container {
+    position: absolute;
+    top: 80px;
+    right: 0px;
+  }
+
+  .leaf {
+    width: 800px;
+    height: 875px;
+    margin-top: 0;
+  }
+
+  .user, .pass, .show {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .txtusername, .txtpassword {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid #B4B4B4;
+  }
+
+  .login {
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #0A112F;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  body, html {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  /* Responsive Styles for Smaller Screens */
+  @media screen and (max-width: 1480px) {
+    .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  padding: 40px; 
+}
+
+.row {
+  width: 100%;
+  max-width: 500px; 
+}
+
+.col-md-6 {
+  width: 100%;
+  max-width: 400px;
+}
+
+.welcome {
+  font-size: 32px; 
+}
+
+.enter {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.txtusername, .txtpassword {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px;
+  height: 45px;
+}
+
+.login {
+  width: 100%;
+  font-size: 18px;
+  padding: 12px;
+}
+
+.leaf-container {
+  display: none; /* Hide image in split screen mode */
+}
+  }
+
+  /* Responsive Styles for Mobile */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 50px;
+    }
+
+    .welcome {
+      font-size: 30px;
+    }
+
+    .enter {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .col-md-6 {
+      width: 100%;
+    }
+
+    .leaf-container {
+      display: none; /* Hide leaf image on mobile */
+    }
+
+    .login {
+      font-size: 16px;
+      padding: 10px;
+    }
+
+    .txtusername, .txtpassword {
+      font-size: 14px;
+      padding: 8px;
+      height: 35px;
+    }
+  }
