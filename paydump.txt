@@ -1,0 +1,14 @@
+ <?php
+                                                    $addpayheadsql =
+                                                        "SELECT tblpayheads.payhead_id, tblpayheads.payhead_name
+                                                    FROM tblpayheads
+                                                    WHERE tblpayheads.payhead_id NOT IN (
+                                                    SELECT tblpaystructures.payhead_id 
+                                                    FROM tblpaystructures 
+                                                    WHERE tblpaystructures.employee_id = :employee_id
+                                                    );";
+                                                    $payheadresult = mysqli_query($link, $addpayheadsql);
+                                                    while ($row = mysqli_fetch_array($payheadresult)) {
+                                                        echo "<option value='" . $row['payhead_id'] . "'>" . $row['payhead_name'] . "</option>";
+                                                    }
+                                                    ?>

@@ -20,23 +20,26 @@ $result = mysqli_query($link, $sql);
     <!-- Datatables CSS-->
     <link href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" />
-<style>
-    /*Table*/
-    @media screen and (min-width: 768px) { 
-    /* Hide horizontal scrollbar for web view */
-    .table-responsive {
-        overflow-x: hidden;
-    }
-    }
+    <style>
+        /*Table*/
+        @media screen and (min-width: 768px) {
 
-    @media screen and (max-width: 767px) {
-    /* Allow horizontal scrolling for mobile view */
-    .table-responsive {
-        overflow-x: auto;
-    }
-}
-</style>
+            /* Hide horizontal scrollbar for web view */
+            .table-responsive {
+                overflow-x: hidden;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+            /* Allow horizontal scrolling for mobile view */
+            .table-responsive {
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="main-container d-flex">
         <!-- Sidebar -->
@@ -65,13 +68,13 @@ $result = mysqli_query($link, $sql);
                 <li class=""><a href="accounts-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-users"></i>
                         Accounts</a></li>
-                <li class=""><a href="deductions-management.php"
+                <li class=""><a href="payheads-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-minus"></i>
-                        Deductions</a></li>
+                        Pay Heads</a></li>
                 <li class="active"><a href="branches-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-building"></i>
                         Branches</a></li>
-                <li class=""><a href="payslips-management.php"
+                <li class=""><a href="payslips-management-admin.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-file"></i>
                         Payslips</a></li>
                 <li class=""><a href="logout.php" class="text-decoration-none px-3 py-2 d-block text-dark"><i
@@ -97,87 +100,94 @@ $result = mysqli_query($link, $sql);
                 unset($_SESSION['executionStatus']);
             }
             ?>
-<!-- Add Branch Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="branch-add.php" method="post">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addModalLabel">Add New Branch</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <?php if (isset($_SESSION['executionStatuss'])): ?>
-                        <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            <?php echo $_SESSION['executionStatuss']; ?>
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                        </div>
-                        <?php unset($_SESSION['executionStatuss']); ?>
-                    <?php endif; ?>
-                    
-                    <p>Fill up this form and submit to create a new branch.</p>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td><label class="fw-bold">Branch Name:</label></td>
-                                <td><input type="text" name="txtbranchname" class="form-control" required></td>
-                            </tr>
-                            <tr>
-                                <td><label class="fw-bold">Address:</label></td>
-                                <td><input type="text" name="txtaddress" class="form-control" required></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+            <!-- Add Branch Modal -->
+            <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="branch-add.php" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="addModalLabel">Add New Branch</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?php if (isset($_SESSION['executionStatuss'])): ?>
+                                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <?php echo $_SESSION['executionStatuss']; ?>
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert'
+                                            aria-label='Close'></button>
+                                    </div>
+                                    <?php unset($_SESSION['executionStatuss']); ?>
+                                <?php endif; ?>
 
-<!-- Edit Branch Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="branch-edit.php" method="post">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editModalLabel">Edit Branch Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <p>Fill up this form and submit to create a new branch.</p>
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td><label class="fw-bold">Branch Name:</label></td>
+                                            <td><input type="text" name="txtbranchname" class="form-control" required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="fw-bold">Address:</label></td>
+                                            <td><input type="text" name="txtaddress" class="form-control" required></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <?php if (isset($_SESSION['executionStatuss'])): ?>
-                        <div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            <?php echo $_SESSION['executionStatuss']; ?>
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                        </div>
-                        <?php unset($_SESSION['executionStatuss']); ?>
-                    <?php endif; ?>
-                    
-                    <p>Fill up this form and submit to edit branch details.</p>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td><label class="fw-bold">Branch Name:</label></td>
-                                <td><input type="text" name="edittxtbranchname" id="edittxtbranchname" class="form-control" required readonly></td>
-                            </tr>
-                            <tr>
-                                <td><label class="fw-bold">Address:</label></td>
-                                <td><input type="text" name="edittxtaddress" id="edittxtaddress" class="form-control" required></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            </div>
+
+            <!-- Edit Branch Modal -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="branch-edit.php" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="editModalLabel">Edit Branch Details</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?php if (isset($_SESSION['executionStatuss'])): ?>
+                                    <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <?php echo $_SESSION['executionStatuss']; ?>
+                                        <button type='button' class='btn-close' data-bs-dismiss='alert'
+                                            aria-label='Close'></button>
+                                    </div>
+                                    <?php unset($_SESSION['executionStatuss']); ?>
+                                <?php endif; ?>
+
+                                <p>Fill up this form and submit to edit branch details.</p>
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td><label class="fw-bold">Branch Name:</label></td>
+                                            <td><input type="text" name="edittxtbranchname" id="edittxtbranchname"
+                                                    class="form-control" required readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="fw-bold">Address:</label></td>
+                                            <td><input type="text" name="edittxtaddress" id="edittxtaddress"
+                                                    class="form-control" required></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" name="btnEdit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" name="btnEdit" value="Submit">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </div>
 
 
             <!-- Delete Modal -->
@@ -241,7 +251,7 @@ $result = mysqli_query($link, $sql);
 
         </div>
     </div>
-    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -288,7 +298,7 @@ $result = mysqli_query($link, $sql);
         });
 
     </script>
-    <script defer src="sidebar.js">
-</body>
+    <script defer src="sidebar.js"></script>
+</body >
 
-</html>
+</html >

@@ -27,35 +27,38 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
 <!DOCTYPE html>
 <html lang="en">
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Employees Management</title>
-    <link rel="stylesheet" href="sidebar.css">
-    <link rel="stylesheet" href="general.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <!-- Datatables CSS-->
-    <link href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employees Management</title>
+<link rel="stylesheet" href="sidebar.css">
+<link rel="stylesheet" href="general.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+<!-- Datatables CSS-->
+<link href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" />
 <style>
     /*Table*/
-    @media screen and (min-width: 768px) { 
-    /* Hide horizontal scrollbar for web view */
-    .table-responsive {
-        overflow-x: hidden;
-    }
+    @media screen and (min-width: 768px) {
+
+        /* Hide horizontal scrollbar for web view */
+        .table-responsive {
+            overflow-x: hidden;
+        }
     }
 
     @media screen and (max-width: 767px) {
-    /* Allow horizontal scrolling for mobile view */
-    .table-responsive {
-        overflow-x: auto;
+
+        /* Allow horizontal scrolling for mobile view */
+        .table-responsive {
+            overflow-x: auto;
+        }
     }
-}
 </style>
 </head>
+
 <body>
     <div class="main-container d-flex">
         <!-- Sidebar -->
@@ -84,13 +87,13 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                 <li class=""><a href="accounts-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-users"></i>
                         Accounts</a></li>
-                <li class=""><a href="deductions-management.php"
+                <li class=""><a href="payheads-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-minus"></i>
-                        Deductions</a></li>
+                        Pay Heads</a></li>
                 <li class=""><a href="branches-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-building"></i>
                         Branches</a></li>
-                <li class=""><a href="payslips-management.php"
+                <li class=""><a href="payslips-management-admin.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-file"></i>
                         Payslips</a></li>
                 <li class=""><a href="logout.php" class="text-decoration-none px-3 py-2 d-block text-dark"><i
@@ -126,7 +129,8 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                         <form action="employee-add.php" method="post">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="addModalLabel">Add New Employee</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p>Fill up this form and submit to add a new employee.</p>
@@ -134,7 +138,8 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                                     <tbody>
                                         <tr>
                                             <td><label class="fw-bold">Employee ID:</label></td>
-                                            <td><input type="text" name="txtemployee_id" class="form-control" required readonly value="<?php echo $latestemployeenumber; ?>"></td>
+                                            <td><input type="text" name="txtemployee_id" class="form-control" required
+                                                    readonly value="<?php echo $latestemployeenumber; ?>"></td>
                                         </tr>
                                         <tr>
                                             <td><label class="fw-bold">Name:</label></td>
@@ -143,10 +148,13 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                                         <tr>
                                             <td><label class="fw-bold">Password:</label></td>
                                             <td>
-                                                <input type="password" name="txtpassword" id="txtpassword" class="form-control" required>
+                                                <input type="password" name="txtpassword" id="txtpassword"
+                                                    class="form-control" required>
                                                 <div class="form-check mt-2">
-                                                    <input type="checkbox" class="form-check-input custom-checkbox" id="showAddPassword">
-                                                    <label class="form-check-label" for="showAddPassword">Show Password</label>
+                                                    <input type="checkbox" class="form-check-input custom-checkbox"
+                                                        id="showAddPassword">
+                                                    <label class="form-check-label" for="showAddPassword">Show
+                                                        Password</label>
                                                 </div>
                                             </td>
                                         </tr>
@@ -165,18 +173,14 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                                                 <select name="cmbbranch" class="form-select" required>
                                                     <option value="">--Select Branch--</option>
                                                     <?php
-                                                        $addbranchsql = "SELECT * FROM tblbranches";
-                                                        $branchresult = mysqli_query($link, $addbranchsql);
-                                                        while ($row = mysqli_fetch_array($branchresult)) {
-                                                            echo "<option value='" . $row['branchname'] . "'>" . $row['branchname'] . "</option>";
-                                                        }
+                                                    $addbranchsql = "SELECT * FROM tblbranches";
+                                                    $branchresult = mysqli_query($link, $addbranchsql);
+                                                    while ($row = mysqli_fetch_array($branchresult)) {
+                                                        echo "<option value='" . $row['branchname'] . "'>" . $row['branchname'] . "</option>";
+                                                    }
                                                     ?>
                                                 </select>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td><label class="fw-bold">Daily Rate:</label></td>
-                                            <td><input type="number" name="txtdailyrate" class="form-control" required></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -189,14 +193,15 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                     </div>
                 </div>
             </div>
-                    <!-- Edit Employee Modal -->
+            <!-- Edit Employee Modal -->
             <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form action="employee-edit.php" method="post">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="editModalLabel">Edit Employee Details</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p>Fill up this form and submit to edit employee details.</p>
@@ -204,16 +209,19 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                                     <tbody>
                                         <tr>
                                             <td><label class="fw-bold">Employee ID:</label></td>
-                                            <td><input type="text" name="edittxtemployee_id" id="edittxtemployee_id" class="form-control" required readonly></td>
+                                            <td><input type="text" name="edittxtemployee_id" id="edittxtemployee_id"
+                                                    class="form-control" required readonly></td>
                                         </tr>
                                         <tr>
                                             <td><label class="fw-bold">Name:</label></td>
-                                            <td><input type="text" name="edittxtname" id="edittxtname" class="form-control" required></td>
+                                            <td><input type="text" name="edittxtname" id="edittxtname"
+                                                    class="form-control" required></td>
                                         </tr>
                                         <tr>
                                             <td><label class="fw-bold">Position:</label></td>
                                             <td>
-                                                <select name="editcmbposition" id="editcmbposition" class="form-select" required>
+                                                <select name="editcmbposition" id="editcmbposition" class="form-select"
+                                                    required>
                                                     <option value="">--Select Job Position--</option>
                                                     <option value="LAUNDRY ATTENDANT">LAUNDRY ATTENDANT</option>
                                                 </select>
@@ -222,20 +230,17 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                                         <tr>
                                             <td><label class="fw-bold">Branch:</label></td>
                                             <td>
-                                                <select name="editcmbbranch" id="editcmbbranch" class="form-select" required>
+                                                <select name="editcmbbranch" id="editcmbbranch" class="form-select"
+                                                    required>
                                                     <option value="">--Select Branch--</option>
                                                     <?php
-                                                        $branchresult = mysqli_query($link, $addbranchsql);
-                                                        while ($row = mysqli_fetch_array($branchresult)) {
-                                                            echo "<option value='" . $row['branchname'] . "'>" . $row['branchname'] . "</option>";
-                                                        }
+                                                    $branchresult = mysqli_query($link, $addbranchsql);
+                                                    while ($row = mysqli_fetch_array($branchresult)) {
+                                                        echo "<option value='" . $row['branchname'] . "'>" . $row['branchname'] . "</option>";
+                                                    }
                                                     ?>
                                                 </select>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td><label class="fw-bold">Daily Rate:</label></td>
-                                            <td><input type="number" name="edittxtdailyrate" id="edittxtdailyrate" class="form-control" required></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -257,13 +262,75 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                                 <h5 class="modal-title">Delete Employee Confirmation</h5>
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure you want to delete this employee?</p>
-                                <input type="hidden" name="deletetxtemployee_id" id="deletetxtemployee_id" readonly><br>
-
+                                <input type="text" name="deletetxtemployee_id" id="deletetxtemployee_id" readonly><br>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary" name="btnDelete">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form action="payslip-add.php" method="POST">
+                <div class="modal" id="addPayslipModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add Payslip Details</h5>
+                            </div>
+                            <div class="modal-body">
+
+
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td><label class="fw-bold">Employee ID:</label></td>
+                                            <td><input type="text" name="addpaysliptxtemployee_id"
+                                                    id="addpaysliptxtemployee_id" class="form-control" required
+                                                    readonly></td>
+                                            <td><input type="text" name="addpaysliptxtemployee_name"
+                                                    id="addpaysliptxtemployee_name" class="form-control" required
+                                                    readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="fw-bold">Month:</label></td>
+                                            <td>
+                                                <select name="cmbmonth" id="cmbmonth" class="form-control">
+                                                    <option value="01">January</option>
+                                                    <option value="02">February</option>
+                                                    <option value="03">March</option>
+                                                    <option value="04">April</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">June</option>
+                                                    <option value="07">July</option>
+                                                    <option value="08">August</option>
+                                                    <option value="09">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="fw-bold">Position:</label></td>
+                                            <td>
+                                                <select name="cmbyear" id="cmbyear" class="form-control">
+                                                    <?php
+                                                    for ($year = 2025; $year <= 2050; $year++) {
+                                                        echo "<option value=\"$year\">$year</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" name="btnPayslipAdd">Yes</button>
                             </div>
                         </div>
                     </div>
@@ -286,7 +353,6 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                             <th>Name</th>
                             <th>Position</th>
                             <th>Branch</th>
-                            <th>Daily Rate</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -298,12 +364,18 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                             echo "<td>" . $row['name'] . "</td>";
                             echo "<td>" . $row['position'] . "</td>";
                             echo "<td>" . $row['branch'] . "</td>";
-                            echo "<td>" . $row['dailyrate'] . "</td>";
                             echo "<td>";
                             echo "<a class='btn btn-small editbtn'><img src='editicon.png' alt='Edit' height='15' width='15'></a>";
                             echo "<a class='btn btn-small deletebtn'><img src='deleteicon.png' alt='Edit' height='17' width='15'></a>";
+                            echo "<a class='btn btn-small payslipaddbtn'><img src='file.png' alt='Edit' height='17' width='15'></a>";
+                            echo "
+                            <form action='paystructures-management.php' method='POST'> 
+                            <input type='text'  value='" . $row['employee_id'] . "' name='txtpaystructureemployee_id' hidden required>
+                            <input type='submit' class='btn btn-small' name='btnStructure' value='Pay Structure'></input>
+                            </form>
+                            ";
                             echo "</td>";
-                            
+
                             echo "</tr>";
                         }
                         ?>
@@ -336,14 +408,12 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                 const name = $row.find("td:eq(1)").text();
                 const position = $row.find("td:eq(2)").text();
                 const branch = $row.find("td:eq(3)").text();
-                const dailyRate = $row.find("td:eq(4)").text();
 
                 // Populate the modal fields
                 $("#edittxtemployee_id").val(employeeId);
                 $("#edittxtname").val(name);
                 $("#editcmbposition").val(position);
                 $("#editcmbbranch").val(branch);
-                $("#edittxtdailyrate").val(dailyRate);
 
                 // Show the modal
                 $("#editModal").modal("show");
@@ -363,14 +433,28 @@ $latestemployeenumber = "EMP" . ($latestainumber + 1);
                 // Show the modal
                 $("#deleteModal").modal("show");
             });
+
+            $(document).on("click", ".payslipaddbtn", function () {
+                // Find the closest row of the clicked button
+                const $row = $(this).closest("tr");
+
+                // Extract the employee ID from the row
+                const employeeId = $row.find("td:eq(0)").text();
+                const employeeName = $row.find("td:eq(1)").text();
+                // Populate the modal field
+                $("#addpaysliptxtemployee_id").val(employeeId);
+                $("#addpaysliptxtemployee_name").val(employeeName);
+                // Show the modal
+                $("#addPayslipModal").modal("show");
+            });
         });
 
     </script>
     <script defer src="sidebar.js">
     </script>
     <script>
-            // Show/Hide Password for Add Modal
-            document.getElementById("showAddPassword").addEventListener("change", function () {
+        // Show/Hide Password for Add Modal
+        document.getElementById("showAddPassword").addEventListener("change", function () {
             const passwordField = document.getElementById("txtpassword");
             passwordField.type = this.checked ? "text" : "password";
         });

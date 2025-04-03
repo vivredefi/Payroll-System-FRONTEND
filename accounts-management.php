@@ -20,23 +20,26 @@ $result = mysqli_query($link, $sql);
     <!-- Datatables CSS-->
     <link href="https://cdn.datatables.net/2.2.1/css/dataTables.bootstrap5.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" />
-<style>
-    /*Table*/
-    @media screen and (min-width: 768px) { 
-    /* Hide horizontal scrollbar for web view */
-    .table-responsive {
-        overflow-x: hidden;
-    }
-    }
+    <style>
+        /*Table*/
+        @media screen and (min-width: 768px) {
 
-    @media screen and (max-width: 767px) {
-    /* Allow horizontal scrolling for mobile view */
-    .table-responsive {
-        overflow-x: auto;
-    }
-}
-</style>
+            /* Hide horizontal scrollbar for web view */
+            .table-responsive {
+                overflow-x: hidden;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+
+            /* Allow horizontal scrolling for mobile view */
+            .table-responsive {
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="main-container d-flex">
         <!-- Sidebar -->
@@ -65,13 +68,13 @@ $result = mysqli_query($link, $sql);
                 <li class="active"><a href="accounts-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-users"></i>
                         Accounts</a></li>
-                <li class=""><a href="deductions-management.php"
+                <li class=""><a href="payheads-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-minus"></i>
-                        Deductions</a></li>
+                        Pay Heads</a></li>
                 <li class=""><a href="branches-management.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-building"></i>
                         Branches</a></li>
-                <li class=""><a href="payslips-management.php"
+                <li class=""><a href="payslips-management-admin.php"
                         class="text-decoration-none px-3 py-2 d-block text-dark"><i class="fal fa-file"></i>
                         Payslips</a></li>
                 <li class=""><a href="logout.php" class="text-decoration-none px-3 py-2 d-block text-dark"><i
@@ -106,7 +109,8 @@ $result = mysqli_query($link, $sql);
                         <form action="account-edit.php" method="post">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="editModalLabel">Edit Account Details</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p>Fill up this form and submit to edit employee details.</p>
@@ -114,12 +118,14 @@ $result = mysqli_query($link, $sql);
                                     <tbody>
                                         <tr>
                                             <td><label class="fw-bold">Username:</label></td>
-                                            <td><input type="text" name="edittxtusername" id="edittxtusername" class="form-control" required readonly></td>
+                                            <td><input type="text" name="edittxtusername" id="edittxtusername"
+                                                    class="form-control" required readonly></td>
                                         </tr>
                                         <tr>
                                             <td><label class="fw-bold">Password:</label></td>
                                             <td>
-                                                <input type="password" name="edittxtuserpass" id="edittxtuserpass" class="form-control" required>
+                                                <input type="password" name="edittxtuserpass" id="edittxtuserpass"
+                                                    class="form-control" required>
                                                 <input type="checkbox" class="form-check-input mt-2" id="showPassword">
                                                 <label class="form-check-label" for="showPassword">Show Password</label>
                                             </td>
@@ -127,7 +133,8 @@ $result = mysqli_query($link, $sql);
                                         <tr>
                                             <td><label class="fw-bold">User Type:</label></td>
                                             <td>
-                                                <select name="editcmbusertype" id="editcmbusertype" class="form-select" required>
+                                                <select name="editcmbusertype" id="editcmbusertype" class="form-select"
+                                                    required>
                                                     <option value="">--Select User Type--</option>
                                                     <option value="STAFF">STAFF</option>
                                                 </select>
@@ -136,7 +143,8 @@ $result = mysqli_query($link, $sql);
                                         <tr>
                                             <td><label class="fw-bold">Status:</label></td>
                                             <td>
-                                                <select name="editcmbuserstatus" id="editcmbuserstatus" class="form-select" required>
+                                                <select name="editcmbuserstatus" id="editcmbuserstatus"
+                                                    class="form-select" required>
                                                     <option value="">--Select Status--</option>
                                                     <option value="ACTIVE">ACTIVE</option>
                                                     <option value="INACTIVE">INACTIVE</option>
@@ -267,14 +275,15 @@ $result = mysqli_query($link, $sql);
     </script>
     <script defer src="sidebar.js">
     </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("showPassword").addEventListener("change", function () {
-        const passwordField = document.getElementById("edittxtuserpass");
-        passwordField.type = this.checked ? "text" : "password";
-    });
-});
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("showPassword").addEventListener("change", function () {
+                const passwordField = document.getElementById("edittxtuserpass");
+                passwordField.type = this.checked ? "text" : "password";
+            });
+        });
 
     </script>
 </body>
+
 </html>

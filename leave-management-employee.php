@@ -46,6 +46,7 @@ $result = mysqli_query($link, $sql);
     .table-responsive {
         overflow-x: auto;
     }
+}
 </style>
 </head>
 
@@ -124,17 +125,18 @@ $result = mysqli_query($link, $sql);
                     </div>
                 </div>
             </div>
-            <!-- Add Leave Modal -->
+
             <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form action="leave-add.php" method="post">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="addModalLabel">Add New Leave</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                <div class="modal-body">
-                            <?php
+                            <div class="modal-body">
+                                <?php
                                 if (isset($_SESSION['executionStatuss'])) {
                                     echo "<script>$('#addModal').modal('show');</script>";
                                     echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>" . $_SESSION['executionStatuss'] . "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
@@ -151,44 +153,27 @@ $result = mysqli_query($link, $sql);
                                         </script>";
                                 }
                                 ?>
-                    <p>Fill up this form and submit to create a new leave request.</p>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td><label class="fw-bold">Date From:</label></td>
-                                <td><input type="date" name="txtdatefrom" class="form-control" required></td>
-                            </tr>
-                            <tr>
-                                <td><label class="fw-bold">Date To:</label></td>
-                                <td><input type="date" name="txtdateto" class="form-control" required></td>
-                            </tr>
-                            <tr>
-                                <td><label class="fw-bold">Type of Leave:</label></td>
-                                <td>
-                                    <select name="cmbtype" class="form-select" required>
-                                        <option value="">--Select Leave Type--</option>
-                                        <option value="Casual Leave">Casual Leave</option>
-                                        <option value="Sick Leave">Sick Leave</option>
-                                        <option value="Maternal Leave">Maternal Leave</option>
-                                        <option value="Paternal Leave">Paternal Leave</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="fw-bold">Message:</label></td>
-                                <td><textarea name="txtmessage" class="form-control" rows="3" required></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <p>Fill up this form and submit to create a new leave details.</p>
+                                Date From: <input type="date" name="txtdatefrom"><br><br>
+                                Date To: <input type="date" name="txtdateto"><br><br>
+                                Type of Leave <select name="cmbtype">
+                                    <option value="Casual Leave">Casual Leave</option>
+                                    <option value="Sick Leave">Casual Leave</option>
+                                    <option value="Maternal Leave">Maternal Leave</option>
+                                    <option value="Paternal Leave">Paternal Leave</option>
+                                </select>
+                                <br><br>
+                                Message: <br><textarea name="txtmessage" style="width: 300px;"></textarea><br><br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" name="btnAdd" value="Submit">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </div>
+
             <form action="leave-delete.php" method="POST">
                 <div class="modal" id="deleteModal">
                     <div class="modal-dialog">
